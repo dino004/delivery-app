@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delivery app</title>
+    <title>Delivery app - Shopping Cart</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
@@ -29,31 +29,64 @@
     <main>
       <div class="container">
         <form id="form-order" class="form-order">
-          <div class="form-customer-info">
-            <label for="name"> Name: </label>
+          <div class="form-customer-info section">
+            <label for="name">Name:</label>
             <input type="text" name="name" id="name" required />
-            <label for="email"> Email: </label>
+
+            <label for="email">Email:</label>
             <input type="email" name="email" id="email" required />
-            <label for="phone"> Phone: </label>
+
+            <label for="phone">Phone:</label>
             <input type="tel" name="phone" id="phone" required />
-            <label for="address"> Address: </label>
+
+            <label for="address">Address:</label>
             <input type="text" name="address" id="address" required />
           </div>
-          <div class="form-orders-info">
-            <ul>
-              <li>
-                <img
-                  src="./image/big-big-burger.avif"
-                  alt="big big burger"
-                  width="100px"
-                  class="image-card"
-                />
-                <h2>Big Big Burger</h2>
-                <p>Price: 888</p>
-                <input type="number" name="" id="" />
-              </li>
-            </ul>
-            <button type="submit" class="add-btn">Submit</button>
+          <div class="form-orders section">
+            <div class="form-orders-list-wrapper">
+              <ul class="cart-list">
+                <li class="cart-item">
+                  <img
+                    src="./image/big-big-burger.avif"
+                    alt="burger"
+                    class="cart-item__img"
+                  />
+                  <div class="cart-item__content">
+                    <h3>Big Big Burger</h3>
+                    <p>Price: 888</p>
+                    <input
+                      type="number"
+                      value="1"
+                      min="1"
+                      class="cart-item__input"
+                    />
+                  </div>
+                </li>
+                <li class="cart-item">
+                  <img
+                    src="./image/big-big-burger.avif"
+                    alt="burger"
+                    class="cart-item__img"
+                  />
+                  <div class="cart-item__content">
+                    <h3>Big Big Burger</h3>
+                    <p>Price: 888</p>
+                    <input
+                      type="number"
+                      value="1"
+                      min="1"
+                      class="cart-item__input"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="form-orders-submit">
+              <p class="total-price">
+                Total price: <span id="total-val">0</span>
+              </p>
+              <button type="submit" class="submit-btn">Submit</button>
+            </div>
           </div>
         </form>
       </div>
