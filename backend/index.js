@@ -3,22 +3,17 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
-// 1. Настройки (СЮДА ПИШЕМ URI)
 const MONGO_URI =
   "mongodb+srv://dino_db_user:XWTPcE437RLicooz@cluster0.s3qkrlq.mongodb.net/delivery_app?appName=Cluster0";
 
-// 2. Подключение к базе (Добавь эти console.log, чтобы увидеть статус)
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log("✅ УРА! База данных успешно подключена!"))
   .catch((err) => console.error("❌ Ошибка подключения к БД:", err));
 
-// 3. Middlewares
-app.use(cors());
-app.use(express.json());
-
-// 2. Схема и Модель (Инструкция для базы)
 const productSchema = new mongoose.Schema({
   name: String,
   price: Number,
@@ -28,7 +23,6 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-// 4. Роуты
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find();
@@ -38,7 +32,6 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-// 5. Запуск сервера
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Сервер запущен на порту ${PORT}`);

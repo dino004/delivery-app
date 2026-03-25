@@ -8,14 +8,14 @@ async function getProducts() {
 
 getProducts()
   .then((item) => {
-    item.forEach(({ name, image }) => {
-      const cardProduct = markupProductCard(name, image);
+    item.forEach(({ name, price, image, shop }) => {
+      const cardProduct = markupProductCard(name, price, image, shop);
       render(cardProduct);
     });
   })
   .catch((err) => console.log("Ошибка запроса:", err));
 
-function markupProductCard(name, image) {
+function markupProductCard(name, price, image, shop) {
   return ` <li class="card">
               <img
                 src="${image}"
@@ -23,7 +23,8 @@ function markupProductCard(name, image) {
                 width="200"
                 class="image-card"
               />
-              <h3 class="card-title">${name}</h3>
+              <h3 class="card-title">${name} (from ${shop})</h3>
+              <p>Price: ${price}</p>
               <button class="add-btn">add to Cart</button>
             </li>`;
 }
