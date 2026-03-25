@@ -25,10 +25,13 @@ const Product = mongoose.model("Product", productSchema);
 
 app.get("/api/products", async (req, res) => {
   try {
-    const products = await Product.find();
+    const { shop } = req.query;
+
+    const query = shop ? { shop: shop } : {};
+    const products = await Product.find(query);
     res.json(products);
   } catch (error) {
-    res.status(500).json({ message: "Ошибка сервера при получении товаров" });
+    res.status(500).json({ message: "Ошибка сервера" });
   }
 });
 

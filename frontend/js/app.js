@@ -1,19 +1,49 @@
 const listProducts = document.querySelector(".list-menu");
+const shopList = document.querySelector(".list-shops");
 
-async function getProducts() {
-  const response = await fetch("http://localhost:3000/api/products");
-  const data = await response.json();
-  return data;
-}
+async function getProducts(shopName = "") {
+  listProducts.innerHTML = "<p>Loading products...</p>";
 
-getProducts()
-  .then((item) => {
-    item.forEach(({ name, price, image, shop }) => {
+  const url = shopName
+    ? `http://localhost:3000/api/products?shop=${shopName}`
+    : "http://localhost:3000/api/products";
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    listProducts.innerHTML = "";
+
+    if (data.length === 0) {
+        listProducts.innerHTML = "<p>No products found in this shop.</p>";
+        return;
+    }
+    data.forEach(({ name, price, image, shop }) => {
       const cardProduct = markupProductCard(name, price, image, shop);
       render(cardProduct);
     });
-  })
-  .catch((err) => console.log("Ошибка запроса:", err));
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    listProducts.innerHTML = `<p style="color: red;">Oops! Something went wrong while loading products. Please try again later.</p>`;
+  }
+}
+
+shopList.addEventListener("click", isSelectedShop);
+
+function isSelectedShop(evt) {
+  const button = evt.target.closest(".shop-btn");
+
+  if (!button || !evt.currentTarget.contains(button)) return;
+
+  const selectedShop = button.dataset.shop || "";
+  getProducts(selectedShop);
+}
+
+getProducts();
 
 function markupProductCard(name, price, image, shop) {
   return ` <li class="card">
