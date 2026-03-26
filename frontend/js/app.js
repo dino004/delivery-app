@@ -65,7 +65,7 @@ function markupProductCard(name, price, image, shop) {
               />
               <h3 class="card-title">${name}</h3>
               <p class="cart-shop">${shop}</p>
-              <p>Price: ${price}</p>
+              <p class="price">Price: ${price}</p>
               <button class="${btnClass}" ${btnDisabled}>${btnText}</button>
             </li>`;
 }
@@ -82,7 +82,7 @@ listProducts.addEventListener("click", (evt) => {
   
   const product = {
     name: card.querySelector(".card-title").textContent,
-    price: card.querySelector("p").textContent.split(": ")[1],
+    price: card.querySelector(".price").textContent.split(": ")[1],
     image: card.querySelector(".image-card").src,
     shop: card.dataset.shop,
   };

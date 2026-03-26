@@ -65,7 +65,8 @@ input {
 
 .shop-btn,
 .add-btn,
-.submit-btn {
+.submit-btn,
+.clear-cart-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -82,10 +83,19 @@ input {
     box-shadow 0.2s ease;
 }
 
+.clear-cart-btn {
+  background-color: #f19b0f;
+}
 .shop-btn:not(:disabled):hover,
 .add-btn:not(:disabled):not(.is-selected):hover,
 .submit-btn:not(:disabled):hover {
   background-color: #8bb996;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.clear-cart-btn:hover {
+  background-color: #d68606;
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

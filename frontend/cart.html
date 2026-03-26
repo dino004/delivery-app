@@ -12,7 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <script type="module" src="./js/app.js"></script>
+     <script type="module" src="./js/cart.js"></script>
   </head>
   <body>
     <header>
@@ -45,40 +45,6 @@
           <div class="form-orders section">
             <div class="form-orders-list-wrapper">
               <ul class="cart-list">
-                <li class="cart-item">
-                  <img
-                    src="./image/big-big-burger.avif"
-                    alt="burger"
-                    class="cart-item__img"
-                  />
-                  <div class="cart-item__content">
-                    <h3>Big Big Burger</h3>
-                    <p>Price: 888</p>
-                    <input
-                      type="number"
-                      value="1"
-                      min="1"
-                      class="cart-item__input"
-                    />
-                  </div>
-                </li>
-                <li class="cart-item">
-                  <img
-                    src="./image/big-big-burger.avif"
-                    alt="burger"
-                    class="cart-item__img"
-                  />
-                  <div class="cart-item__content">
-                    <h3>Big Big Burger</h3>
-                    <p>Price: 888</p>
-                    <input
-                      type="number"
-                      value="1"
-                      min="1"
-                      class="cart-item__input"
-                    />
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="form-orders-submit">
@@ -86,6 +52,7 @@
                 Total price: <span id="total-val">0</span>
               </p>
               <button type="submit" class="submit-btn">Submit</button>
+              <button type="button" class="clear-cart-btn">Clear Cart</button>
             </div>
           </div>
         </form>
