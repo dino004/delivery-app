@@ -239,6 +239,7 @@ input {
 }
 
 .cart-item {
+  position: relative;
   display: flex;
   gap: 20px;
   padding: 16px;
@@ -267,6 +268,15 @@ input {
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.cart-item__remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .form-orders-submit {
