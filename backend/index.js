@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const Product = require("./models/Product.js");
+const Order = require("./models/Order.js");
 
 const app = express();
 app.use(cors());
@@ -8,20 +10,12 @@ app.use(express.json());
 
 const MONGO_URI =
   "mongodb+srv://dino_db_user:XWTPcE437RLicooz@cluster0.s3qkrlq.mongodb.net/delivery_app?appName=Cluster0";
+  
 
 mongoose
   .connect(MONGO_URI)
-  .then(() => console.log("✅ УРА! База данных успешно подключена!"))
-  .catch((err) => console.error("❌ Ошибка подключения к БД:", err));
-
-const productSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  image: String,
-  shop: String,
-});
-
-const Product = mongoose.model("Product", productSchema);
+  .then(() => console.log("The database has been connected successfully!"))
+  .catch((err) => console.error("Error connecting to the database", err));
 
 app.get("/api/products", async (req, res) => {
   try {
@@ -31,7 +25,21 @@ app.get("/api/products", async (req, res) => {
     const products = await Product.find(query);
     res.json(products);
   } catch (error) {
-    res.status(500).json({ message: "Ошибка сервера" });
+    res.status(500).json({ message: "Server error while receiving goods" });
+  }
+});
+
+app.post("/api/orders", async (req, res) => {
+  try {
+    const newOrder = new Order(req.body);
+    await newOrder.save();
+    res
+      .status(201)
+      .json({ message: "Order created successfully!", order: newOrder });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Error creating order", error: error.message });
   }
 });
 

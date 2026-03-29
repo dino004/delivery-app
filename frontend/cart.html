@@ -12,7 +12,8 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./css/style.css" />
-     <script type="module" src="./js/cart.js"></script>
+    <link rel="stylesheet" href="./css/spinner.css" />
+    <script type="module" src="./js/cart.js"></script>
   </head>
   <body>
     <header>
@@ -31,28 +32,41 @@
         <form id="form-order" class="form-order">
           <div class="form-customer-info section">
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required />
+            <input type="text" name="name" id="name" placeholder="Dino" required />
 
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required />
+            <input type="email" name="email" id="email" placeholder="dino@mail.com" required />
 
             <label for="phone">Phone:</label>
-            <input type="tel" name="phone" id="phone" required />
+            <input type="tel" name="phone" id="phone" placeholder="0444444444" required />
 
             <label for="address">Address:</label>
-            <input type="text" name="address" id="address" required />
+            <input type="text" name="address" id="address" placeholder="Dinoland" required />
           </div>
           <div class="form-orders section">
             <div class="form-orders-list-wrapper">
-              <ul class="cart-list">
-              </ul>
+              <ul class="cart-list"></ul>
             </div>
             <div class="form-orders-submit">
               <p class="total-price">
                 Total price: <span id="total-value">0</span>
               </p>
-              <button type="submit" class="submit-btn">Submit</button>
               <button type="button" class="clear-cart-btn">Clear Cart</button>
+              <button type="submit" class="submit-btn">Submit</button>
+              <div class="lds-spinner hidden">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
           </div>
         </form>

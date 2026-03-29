@@ -1,6 +1,8 @@
 const form = document.querySelector("#form-order");
 const listOrders = document.querySelector(".cart-list");
 const totalPriceElement = document.querySelector("#total-value");
+const loader = document.querySelector(".lds-spinner");
+const submitBtn = document.querySelector(".submit-btn");
 
 function getOrders() {
   const orders = JSON.parse(localStorage.getItem("order")) || [];
@@ -29,7 +31,6 @@ function renderListOrders(html) {
 }
 
 function upgradeTotalPrice(sum) {
-
   if (totalPriceElement) {
     totalPriceElement.textContent = sum;
   }
@@ -124,3 +125,60 @@ listOrders.addEventListener("click", (evt) => {
 
   removeOrder(id);
 });
+
+form.addEventListener("submit", handleSubmit);
+
+async function handleSubmit(evt) {
+  evt.preventDefault();
+
+  
+  loader.classList.remove("hidden");
+  submitBtn.disabled = true;
+  
+  const customer = {
+      name: document.querySelector("#name").value,
+      email: document.querySelector("#email").value,
+      phone: document.querySelector("#phone").value,
+      address: document.querySelector("#address").value,
+    };
+    
+    const items = JSON.parse(localStorage.getItem("order")) || [];
+    const totalPrice = Number(document.querySelector("#total-value").textContent);
+    
+    const finalOrder = { customer, items, totalPrice };
+    
+    if (items.length === 0) {
+      alert("Your cart is empty. Add some food first!");
+      return;
+    }
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(finalOrder),
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+  };
+  try {
+    const responses = await fetch("http://localhost:3000/api/orders", options);
+
+    if (!responses.ok) {
+      throw new Error(`Server error: ${responses.status}`);
+    }
+
+    const responseData = await responses.json();
+
+    alert("Order created successfully!");
+    console.log("Saved order:", responseData);
+
+    localStorage.removeItem("order");
+    form.reset();
+    getOrders();
+  } catch (error) {
+    console.error("Failed to submit order:", error);
+    alert("Oops! Something went wrong while sending your order.");
+  } finally {
+    loader.classList.add("hidden");
+    submitBtn.disabled = false;
+  }
+}
