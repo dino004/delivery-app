@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -8,9 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI =
-  "mongodb+srv://dino_db_user:XWTPcE437RLicooz@cluster0.s3qkrlq.mongodb.net/delivery_app?appName=Cluster0";
-  
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI)
