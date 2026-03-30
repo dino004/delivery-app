@@ -4,7 +4,7 @@
 
 ## 🔗 Project Links
 - **Source Code:** [GitHub Repository](https://github.com/dino004/delivery-app)
-- [cite_start]**Live Demo (Public URL):** ⏳ *Deployment in progress (link will appear here soon)* 
+- [cite_start]**Live Demo (delivery-app-wine-seven.vercel.app)** 
 
 ## [cite_start]🏆 Complexity Level: Base Level (with Middle elements) 
 [cite_start]The project fully covers all the requirements of the Base Level (two pages, working with a database, validation) and includes strict TypeScript typing. 
