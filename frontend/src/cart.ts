@@ -184,7 +184,7 @@ async function handleSubmit(evt: Event) {
     },
   };
   try {
-    const responses = await fetch("http://localhost:3000/api/orders", options);
+    const responses = await fetch("https://delivery-app-backend-4w31.onrender.com/api/orders", options);
 
     if (!responses.ok) {
       throw new Error(`Server error: ${responses.status}`);

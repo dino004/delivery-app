@@ -4,8 +4,8 @@ const addToCartBtn = document.querySelector(".add-btn");
 async function getProducts(shopName = "") {
     listProducts.innerHTML = "<p>Loading products...</p>";
     const url = shopName
-        ? `http://localhost:3000/api/products?shop=${shopName}`
-        : "http://localhost:3000/api/products";
+        ? `https://delivery-app-backend-4w31.onrender.com/api/products?shop=${shopName}`
+        : "https://delivery-app-backend-4w31.onrender.com/api/products";
     try {
         const response = await fetch(url);
         if (!response.ok) {

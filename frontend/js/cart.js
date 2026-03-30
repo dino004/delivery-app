@@ -90,7 +90,6 @@ if (clearBtn) {
     });
 }
 function removeOrder(id) {
-    console.log('first', id);
     const arrOrders = JSON.parse(localStorage.getItem("order") || "[]");
     const updatedOrders = arrOrders.filter((order) => order._id !== id);
     localStorage.setItem("order", JSON.stringify(updatedOrders));
@@ -141,7 +140,7 @@ async function handleSubmit(evt) {
         },
     };
     try {
-        const responses = await fetch("http://localhost:3000/api/orders", options);
+        const responses = await fetch("https://delivery-app-backend-4w31.onrender.com/api/orders", options);
         if (!responses.ok) {
             throw new Error(`Server error: ${responses.status}`);
         }
