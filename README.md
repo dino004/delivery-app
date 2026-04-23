@@ -3,8 +3,8 @@
 Web application where users can order food delivery from various shops. 
 
 ## 🔗 Project Links
-- **Source Code:** GitHub Repository: (https://github.com/dino004/delivery-app)
-- **Live Demo (delivery-app-wine-seven.vercel.app)** 
+- **Source Code:** https://github.com/dino004/delivery-app
+- **Live Demo:** delivery-app-wine-seven.vercel.app** 
 
 ## 🏆 Complexity Level: Base Level (with Middle elements) 
 The project fully covers all the requirements of the Base Level (two pages, working with a database, validation) and includes strict TypeScript typing. 
