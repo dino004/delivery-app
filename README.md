@@ -1,4 +1,4 @@
-# 🍔 Delivery App (ElifTech School Test Task) [cite: 3, 5]
+# 🍔 Delivery App
 
 Web application where users can order food delivery from various shops. 
 
